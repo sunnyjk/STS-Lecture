@@ -31,6 +31,8 @@ public class Main {
 				for(CommentEntity c : list2){
 					System.out.println("==> " + c.getComments());
 				}
+			} else {
+				System.out.println("==> 서평없음.");
 			}
 			
 		}
