@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- 책 객체를 만드는 코드 -->
+	<bean id="book1" class="exam_02_beans_xml_tag.BookEntity" >
+		<property name="btitle"><value>해리포터</value></property>
+		<property name="bauthor" value="조앤 K.롤링"></property>
+	</bean>
+	<bean id="book2" class="exam_02_beans_xml_tag.BookEntity" >
+		<property name="btitle"><value>파우스트</value></property>
+		<property name="bauthor" value="괴테"></property>
+	</bean>
+	<bean id="book3" class="exam_02_beans_xml_tag.BookEntity" >
+		<property name="btitle"><value>레 미제라블</value></property>
+		<property name="bauthor" value="빅토르 위고"></property>
+	</bean>
+
+	<!-- 책장 만드는 코드
+		: 이 때 id는 Main 클래스에서 bean을 뽑아내는 값과 동일해야 한다. -->	
+	<bean id="bookshelf" class="exam_02_beans_xml_tag.BookShelf">
+		<property name="shelfName" value="외국서적"></property>
+		<property name="shelfPrice" value="100000"></property>
+		<!-- 데이터 값을 자동으로 Integer로 바꿔서 넣어준다. -->
+		<property name="list">
+			<list>
+				<ref bean="book1"/>
+				<ref bean="book2"/>
+				<ref bean="book3"/>
+			</list>
+		</property>
+		<property name="map">
+			<map>
+				<entry key="1" value-ref="book1" />
+				<entry key="2" value-ref="book2" />
+				<entry key="3" value-ref="book3" />
+			</map>
+		</property>
+	</bean>
+
+</beans>
